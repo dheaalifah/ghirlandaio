@@ -12,9 +12,7 @@
 2. makalah dalam format markdowm
 
 ## Audience
-
-untuk setiap anggota kelas, setiap sesi kelas selesai, akan mebuat resume dari hasil presentasi kelompok presentator, jika hasil resume keluar dari apa yang disampaikan oleh presentator maka resume tersebut akan di anggap gagal dan nilai penugasan pada minggu tersebut kosong.
-
+Untuk setiap anggota kelas, setiap sesi kelas selesai, akan mebuat resume dari hasil presentasi kelompok presentator, jika hasil resume keluar dari apa yang disampaikan oleh presentator maka resume tersebut akan di anggap gagal dan nilai penugasan pada minggu tersebut kosong.
 
 
 ## must to do:
@@ -25,6 +23,6 @@ untuk setiap anggota kelas, setiap sesi kelas selesai, akan mebuat resume dari h
 
 ## dont do:
 1. Larangan penggunaan artificial intelegence
-2. Setiap anggota kelompok akan di tanya, sumber dari materi kelompoknya, kegagalan pemberian penjelasan berarti kegagalan dalam pembuatan penugasan.
-3. Jika terdeteksi menggunakan artifisial intelegence dalam peguasan sesi ini, maka seluruh anggota kelompok akan di sanksi dengan diskualifikasi.
+2. Setiap anggota kelompok akan di tanya, sumber dan penjelasan akademis dari materi kelompoknya, kegagalan pemberian penjelasan berarti kegagalan dalam  penugasan. Anggta yang tidak bisa mempertanggungjawabkan argumentasi penguasan yang disusun nilai penguasan akan di kosongkan bagi individu tersebut.
+3. Jika terdeteksi menggunakan artifisial intelegence dalam peguasan sesi ini, maka seluruh anggota kelompok akan di sanksi dengan diskualifikasi sehingga nilai penugasan kosong. Setiap alasan yang di ajukan akan di tolak jika ketahuan menggunakan artifisial intelegence untuk kondisi dan kapasitas apapun.
 
