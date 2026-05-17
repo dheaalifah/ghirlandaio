@@ -95,25 +95,21 @@ PipeWire merupakan kerangka kerja multimedia tingkat rendah yang digunakan untuk
 
    ``` sudo pacman -S pipewire ```. 
 
-2. Menginstal dukungan audio tambahan.
+2. Install PipeWire beserta komponen pendukungnya menggunakan
    
-   ``` sudo pacman -S pipewire-pulse pipewire-alsa pipewire-jack ```
+   ``` sudo pacman -S pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack ```
 
-3. Menginstal WirePlumber sebagai session manager.
+3. Setelah instalasi selesai, aktifkan layanan PipeWire, PulseAudio dan WirePlumber.
 
-   ``` sudo pacman -S wireplumber ```
+   ``` systemctl --user enable --now pipewire.service ```
 
-4. Mengaktifkan layanan PipeWire 
+   ``` systemctl --user enable --now pipewire-pulse.service ```
 
-   ``` systemctl --user enable pipewire ```
+   ``` systemctl --user enable --now wireplumber.service ```
 
-   ``` systemctl --user start pipewire ```
-
-5. Mengaktifkan WirePlumber.
+5. Untuk memastikan PipeWire berjalan dengan baik gunakan
    
-   ``` systemctl --user enable wireplumber ```
-
-   ``` systemctl --user start wireplumber ```
+   ``` pactl info ```. Jika instalasi berhasil maka akan muncul tulisan ``` Server Name: PulseAudio (on PipeWire) ``` , tulisan tersebut menunjukkan bahwa PipeWire telah aktif dan berfungsi sebagai sistem audio utama pada Arch Linux.
 
 ## 2.4 Dolphin
 Dolphin merupakan file manager bawaan KDE yang digunakan untuk mengelola file dan folder pada sistem Linux.  Selain itu, Dolphin juga mendukung fitur preview file untuk video, gambar, PDF, audio, dan berbagai format lainnya melalui paket tambahan seperti ffmpegthumbs dan kdegraphics-thumbnailers. Penjelasan Installasi KDE Plasma:
