@@ -72,14 +72,34 @@ dalam  menginstall desktop Arch Linux terdapat beberapa komponen penting yang ha
 NetworkManager adalah program yang digunakan untuk mendeteksi dan mengatur konfigurasi jaringan agar sistem dapat terhubung ke internet secara otomatis, baik melalui jaringan kabel maupun nirkabel. Pada jaringan wireless, NetworkManager dapat memprioritaskan jaringan yang sudah dikenal dan secara otomatis berpindah ke jaringan yang lebih stabil, sedangkan pada jaringan kabel layanan ini akan lebih diprioritaskan dibandingkan koneksi wireless. Selain itu, NetworkManager juga mendukung koneksi modem dan beberapa jenis VPN sehingga memudahkan pengguna dalam mengelola berbagai jenis koneksi jaringan pada sistem Linux.
 
 ## 2.2 Plasma
-KDE Plasma merupakan proyek perangkat lunak yang terdiri dari lingkungan desktop KDE Plasma, berbagai aplikasi KDE Applications, serta pustaka tambahan Qt yang disebut KDE Frameworks. KDE Plasma dikenal sebagai desktop environment yang modern, ringan, dan memiliki tampilan antarmuka yang menarik sehingga banyak digunakan pada sistem Linux desktop.
+KDE Plasma merupakan proyek perangkat lunak yang terdiri dari lingkungan desktop KDE Plasma, berbagai aplikasi KDE Applications, serta pustaka tambahan Qt yang disebut KDE Frameworks. KDE Plasma dikenal sebagai desktop environment yang modern, ringan, dan memiliki tampilan antarmuka yang menarik sehingga banyak digunakan pada sistem Linux desktop. Penjelasan Installasi KDE Plasma:
+
+1. Pertama-tama pastinya kita akan masuk ke Arch Linux terlebih dahulu, Jangan lupa untuk selalu memeriksa updetan terbaru
+
+``` sudo pacman -syyu ```
+
+2. Lalu kemudian akan melakukan installasi KDE Plasma
+
+``` sudo pacman -s xorg plasma plasma-wayland-sesion- kde-applications ```
+
+setelah sudah semua, cukup all saja dan default 1, dan yang terakhir y
+
+3. Setela itu aktifkan SDDM, SDDM ini merupakan display manager dari KDE Plasma
+
+``` sudo systemsti enable sddm.service ``` kemudian kita start ``` sudo systemcti start sddm.service ```
 
 ## 2.3 Pipwire
-PipeWire merupakan kerangka kerja multimedia tingkat rendah yang digunakan untuk mengelola audio dan video pada sistem Linux. Layanan ini juga dapat dikonfigurasi sebagai server audio maupun server penangkap video. Selain itu, PipeWire mendukung penggunaan container seperti Flatpak dan menggunakan sistem keamanan berbasis izin seperti Polkit untuk mengatur akses perekaman layar maupun audio sehingga lebih aman dan fleksibel digunakan pada desktop Linux modern.
+PipeWire merupakan kerangka kerja multimedia tingkat rendah yang digunakan untuk mengelola audio dan video pada sistem Linux. Layanan ini juga dapat dikonfigurasi sebagai server audio maupun server penangkap video. Selain itu, PipeWire mendukung penggunaan container seperti Flatpak dan menggunakan sistem keamanan berbasis izin seperti Polkit untuk mengatur akses perekaman layar maupun audio sehingga lebih aman dan fleksibel digunakan pada desktop Linux modern. 
 
 ## 2.4 Dolphin
-Dolphin merupakan file manager bawaan KDE yang digunakan untuk mengelola file dan folder pada sistem Linux.  Selain itu, Dolphin juga mendukung fitur preview file untuk video, gambar, PDF, audio, dan berbagai format lainnya melalui paket tambahan seperti ffmpegthumbs dan kdegraphics-thumbnailers.
+Dolphin merupakan file manager bawaan KDE yang digunakan untuk mengelola file dan folder pada sistem Linux.  Selain itu, Dolphin juga mendukung fitur preview file untuk video, gambar, PDF, audio, dan berbagai format lainnya melalui paket tambahan seperti ffmpegthumbs dan kdegraphics-thumbnailers. Penjelasan Installasi KDE Plasma:
 
+1. Install Dolphin
+
+``` sudo apt install dolphin ``` tunggu hingga installasi selesai 
+
+2. Seletah semuanya selesai buka Doplphin File Manager
+   
 ## 2.5 Kitty
 Kitty merupakan emulator terminal berbasis OpenGL yang dapat diprogram dan mendukung fitur TrueColor, ligatur, ekstensi protokol input keyboard, serta rendering gambar di dalam terminal. Kitty juga memiliki kemampuan tiling seperti GNU Screen atau tmux sehingga pengguna dapat membuka dan mengatur beberapa tab maupun jendela terminal dengan mudah melalui kombinasi tombol keyboard. Selain itu, Kitty menyediakan fitur tambahan yang disebut kittens, yaitu subprogram untuk berbagai kebutuhan seperti menampilkan gambar di terminal (icat), membandingkan file (diff), serta mengakses clipboard sistem (clipboard).
 
