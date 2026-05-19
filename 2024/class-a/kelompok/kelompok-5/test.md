@@ -59,11 +59,11 @@ Di live environment anda dapat melihat disk yang dibagi menjadi *block device* s
 ```
 fdisk -l
 ```
-cari disk mana yang mau dipartisi
+### cari disk mana yang mau dipartisi
 
 <img width="1920" height="1080" alt="Desain tanpa judul (2)" src="https://github.com/user-attachments/assets/f5f13826-fd86-4c1d-98d2-b6cf1a5f208e" />
 
-masuk ke disk yang mau dipartisi
+### masuk ke disk yang mau dipartisi
 disini disk yang mau saya partisi adalah ```nvme0n1```
 untuk format disk ketik ```fdisk```
 
@@ -74,10 +74,10 @@ untuk format disk ketik ```fdisk```
 1. ubah mode partisi dari MBR menggunakan GPT menggunakan ```g```
 2. cek berapa free disk yang sudah disiapkan untuk arch linux dengan tombol ```F``` ***kapital ya***
 
-sesuaikan dengan layout ini
+### sesuaikan dengan layout ini
 <img width="937" height="271" alt="image" src="https://github.com/user-attachments/assets/0ae7bdc3-e491-449b-976c-05096373697e" />
 
-Device pertama adalah boot
+### Device pertama adalah boot
 
 
 1. ketik ```n``` untuk membuat partisi baru
@@ -86,7 +86,7 @@ Device pertama adalah boot
 4. lalu tentukan berapa memory untuk boot sesuai panduan di arch wiki adalah 1G jadi ketik ```+1G```
 
 
-ubah tipe disknya
+### ubah tipe disknya
 
 <img width="578" height="798" alt="image" src="https://github.com/user-attachments/assets/cd5a5bce-a0db-4d29-af3b-8f0165feb458" />
 
@@ -95,26 +95,26 @@ ubah tipe disknya
 3. tekan ```t``` lalu ketik ```6``` sesuai disk yang ingin kita ganti tipenya
 4. lalu masukan nomor tipe disk tujuan, ketik ```1``` untuk merubah linux filesystem (default) ke EFI System
 
-lalu buat partisi baru dan lakukan hal yang sama untuk device root dan linux swap
+### lalu buat partisi baru dan lakukan hal yang sama untuk device root dan linux swap
 
 misalnya nama devicenya adalah
 ```fdisk /dev/nvme0n1p7``` untuk linux swap adalah 4G
 ```fdisk /dev/nvme0n1p8``` untuk root adalah sisanya misalnya 95G
 
-lalu format disk
+### lalu format disk
 
-untuk boot
+### untuk boot
 ```
 mkfs.fat -F 32 /dev/nvme0np6
 ```
 
-untuk swap
+### untuk swap
 ```
 mkswap /dev/nvme0np7
 swapon /dev/nvme0np7
 ```
 
-untuk root
+### untuk root
 ```
 # mkfs.ext4 /dev/nvme0np8
 ```
@@ -126,7 +126,7 @@ mount root ke ```/mnt```
 ```
 mount /dev/nvme0np8 /mnt
 ```
-untuk UEFI System mount ke uf system contoh
+### untuk UEFI System mount ke uf system contoh
 ```
 # mount --mkdir /dev/efi_system_partition /mnt/boot
 ```
@@ -136,7 +136,7 @@ jika diperlukan semisalnya downloadnya masih lambat
 ```
 nano /etc/pacman.d/mirrorlist
 ```
-pilih yang kaliah rasa lebih cocok dan pindahkan paling atas
+### pilih yang kaliah rasa lebih cocok dan pindahkan paling atas
 
 ## Install packages penting
 
@@ -159,8 +159,8 @@ dibuatlah file
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-chroot
-untuk ke system environmt 
+### chroot
+### untuk ke system environmt 
 ```
 arch-chroot /mnt
 ```
@@ -170,7 +170,7 @@ ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 hwclock --systohc
 ```
 
-localization
+### localization
 ```
 pacman -S nano
 ```
@@ -204,24 +204,24 @@ hostname
 nano /etc/hostname
 ```
 
-ketik nama hostname
+### ketik nama hostname
 
-network management
+### network management
 pastikan network interface telah dilist dan dienable
 ```
 ip a
 ping archlinux.com
 ```
-instal networkmanager
+### instal networkmanager
 ```
 pacman -S networkmanager
 ```
-start networkmanager
+### start networkmanager
 ```
 systemctl enable NetworkManager.service
 ```
 
-initframs
+### initframs
 ```
 mkinitcpio -P
 ```
@@ -229,15 +229,17 @@ root password
 ```
 passwd
 ```
-boot loader
+### boot loader
 install efibootmgr
 ```
 pacman -S grub efibootmgr
 ```
-install grub package
+### install grub package
+contoh
 ```
 grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
 ```
+sesuaikan dengan folder boot
 ```
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
