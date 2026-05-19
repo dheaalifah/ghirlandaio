@@ -458,7 +458,7 @@ Untuk melanjutkan ke tahap lokalisasi, unduh dan instal `Neovim` terlebih dahulu
 
 Pilih sesuai dengan platform laptop dan ketik untuk memulai pengunduhan.
 
-__Neovim__ merupakan fork dari __Vim__ yang bertujuan untuk meningkatkan basis kode, memungkinkan implementasi API yang lebih mudah, pengalaman pengguna yang lebih baik, dan implementasi plugin.
+__Neovim__ merupakan fork dari __Vim__ yang bertujuan untuk meningkatkan basis kode, memungkinkan implementasi API yang lebih mudah, pengalaman pengguna yang lebih baik, dan implementasi plugin.[^1]
 
 ---
 
@@ -543,8 +543,7 @@ Perintah tersebut digunakan untuk mengatur __password__ administrator/root.
 
 # Install Bootloader (GRUB)
 
-Langkah berikutnya adalah melakukan instalisasi `Bootloader` atau `GRUB`, GRUB (GRand Unified Bootloader) adalah sebuah boot loader. GRUB saat ini juga disebut sebagai `GRUB 2`. Sementara GRUB asli, atau dikenal dengan `GRUB Legacy`, yang sesuai dengan versi 0.9x. Modul dokumentasi ini membahas Bootloader GRUB menggunakan __GRUB 2__
-
+Langkah berikutnya adalah melakukan instalisasi `Bootloader` atau `GRUB`, GRUB (GRand Unified Bootloader) adalah sebuah boot loader. GRUB saat ini juga dikenal sebagai `GRUB 2`. Sementara GRUB asli, atau dikenal dengan `GRUB Legacy`, yang sesuai dengan versi 0.9x.[^2] 
 
 Ikuti langkah langkah ini untuk menginstall Bootloader (GRUB):
 ```bash
@@ -591,6 +590,11 @@ __SELESAI.__
 
 ---
 
+## Sumber Tambahan:
+
+[^1]: https://wiki.archlinux.org/title/Neovim
+
+[^2]: https://wiki.archlinux.org/title/GRUB
 
 
 
