@@ -458,7 +458,7 @@ Untuk melanjutkan ke tahap lokalisasi, unduh dan instal `Neovim` terlebih dahulu
 
 Pilih sesuai dengan platform laptop dan ketik untuk memulai pengunduhan.
 
-penjelasan neovim
+__Neovim__ merupakan fork dari __Vim__ yang bertujuan untuk meningkatkan basis kode, memungkinkan implementasi API yang lebih mudah, pengalaman pengguna yang lebih baik, dan implementasi plugin.
 
 ---
 
