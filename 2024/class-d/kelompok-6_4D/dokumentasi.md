@@ -61,13 +61,15 @@ __mkfs.ext4__
 ikuti sesuai type kalian apakah sda atau nvme0n1
 
 ## me mounting point 
-### mounting partisi bentuk nvmeon1
-mount /dev/nvme0n1p3 /mnt <br>
+### mounting partisi bentuk nvme0n1
+__mount /dev/nvme0n1p3 /mnt__ <br>
 untuk me mount partisi root alias /mnt <br> 
-mount --mkdir /dev/nvme0n1p1 /mnt/boot <br>
+__mount --mkdir /dev/nvme0n1p1 /mnt/boot__ <br>
 untuk me mount partisi ke boot nantinya <br> 
-swapon /dev/nvme0n1p2  <br>
+__swapon /dev/nvme0n1p2__  <br>
 untuk mengaktifkan fungsi swap <br>
+
+begitu juga tinggal di ganti saja bagi sda jadi sda1 , sda2 , sda3 , sda 4 
 
 setelah format dan mounting berhasil ketik 
 
@@ -87,13 +89,13 @@ fungsinya untuk menyiapkkan file yang sudah di mount tadi <br>
 masuk ke root dengan mengetik ini <br> 
 arch-chroot /mnt <br> 
 
-menyesuaikan waktu 
+## menyesuaikan waktu 
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime <br> 
 hwclock --systohc <br> 
 
 ini untuk menyesuaikan waktu dan jam agar tersinkronisasi
 
-locale gen
+## locale gen
 nvim /etc/locale.gen
 
 #/en_US cari ini dengan ketik /
@@ -111,23 +113,23 @@ useradd command untuk menambah user
 groupadd command untum menambah additional group ( default group menggunakan wheel) 
 /etc/sudoers.d/ adalah tempat menyimpan user yang memiliki izin suo 
 
-cara menambahkan 
-useradd -m -G wheel -s /bin/bash user 
-passwd untuk mengamankan izin user 
-passwd user 
-untuk memasang izin pengaman pada user
+cara menambahkan <br>
+useradd -m -G wheel -s /bin/bash user <br>
+passwd untuk mengamankan izin user <br>
+passwd user <br>
+untuk memasang izin pengaman pada user <br> 
 
-EDITOR=nvim visudo /etc/sudoers.d/administrator
+EDITOR=nvim visudo /etc/sudoers.d/administrator <br>
 
-masukan user ALL=(ALL:ALL) ALL 
+masukan user ALL=(ALL:ALL) ALL <br>
 
-##install DE dekstop environment dan etentital dependencies or packages 
+## install DE dekstop environment dan etentital dependencies or packages 
 sudo pacman -S plasma kitty dolphin pipewire networkmanager sddm 
 
-systemctl enable NetworkManager.service
+systemctl enable NetworkManager.service <br>
 ini untuk wifi
 
-systemctl enable sddm.service 
+systemctl enable sddm.service <br> 
 ini untuk login 
 
 ## untuk os prober untuk dual boot windows 
@@ -140,7 +142,10 @@ mount ke /boot kemudian jalankan  grub-mkconfig
 
 nqnti di lanjutin saat grub-install 
 
-sudo adalah bentuk izin pada sistem, sedangkan pacman berfungsi untuk mengambil dependencies atau packages dari mirror yang ada pada arch linux atau repo milik arch linux itu sendiri 
+## sudo
+adalah bentuk izin pada sistem, sedangkan pacman berfungsi untuk mengambil dependencies atau packages dari mirror yang ada pada arch linux atau repo milik arch linux itu sendiri 
+
+## GRUB efi bootloader
 
 cd boot/
 
@@ -152,7 +157,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --efi-bootloader-id=Arch-
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-mkinitcpio -P 
+## mkinitcpio -P 
 
 gunanya untuk mengenerate image uefi bootloader dari linux untuk linux  
 
