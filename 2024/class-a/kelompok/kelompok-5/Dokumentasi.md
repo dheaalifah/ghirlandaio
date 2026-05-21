@@ -213,15 +213,7 @@ locale -gen
 
 ketik
 ```
-nano /etc/locale.gen
-```
-ketik
-```
-LANG=en_US.UTF-8
-```
-jalankan
-```
-locale -gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
 hostname
 ```
