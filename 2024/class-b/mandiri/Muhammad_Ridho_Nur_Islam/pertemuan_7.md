@@ -35,8 +35,9 @@
 <img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/langkah35.jpg" width="500" height="600">
 <img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/langkah36.jpg" width="500" height="600">
 
-##problem solving
-<img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/langkah37.jpg" width="500" height="600">
-<img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/langkah38.jpg" width="500" height="600">.
+## problem solving
+
+<img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/problem_solving1.jpg" width="500" height="600">
+<img src="/2024/class-b/mandiri/Muhammad_Ridho_Nur_Islam/img/problem_solving2.jpg" width="500" height="600">
 
 
