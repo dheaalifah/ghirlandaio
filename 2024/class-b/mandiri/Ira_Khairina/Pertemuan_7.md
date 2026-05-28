@@ -64,3 +64,5 @@ Dokumentasi ini dibuat untuk memenuhi tugas audience pada mata kuliah Perpustaka
 <img width="1600" height="1196" alt="WhatsApp Image 2026-05-28 at 9 47 30 AM (2)" src="https://github.com/user-attachments/assets/2b69b137-80c9-4afe-a641-f31e42da5c52" />
 
 <img width="1600" height="1196" alt="WhatsApp Image 2026-05-28 at 9 47 30 AM (3)" src="https://github.com/user-attachments/assets/8e737490-0255-4636-9dca-a139c9093ffa" />
+
+<img width="1600" height="1196" alt="WhatsApp Image 2026-05-28 at 10 07 46 AM" src="https://github.com/user-attachments/assets/218c3cdb-cb96-477c-be4f-408950ccf08a" />
