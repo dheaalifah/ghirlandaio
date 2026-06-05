@@ -367,12 +367,22 @@ session    required   pam_env.so
 nvim /etc/booster.yaml
 ```
 
-add value
+## add value
 ```
 network:
   dhcp: on
 universal: false
-modules: -*,ext4
+modules: -*,ext4 
+extra_files: fsck,fsck.ext4
+strip: true
+enable_lvm: true
+```
+## Jika anda menggunakan partisi bertipe nvme, tambahkan bagian module seperti berikut:
+```
+network:
+  dhcp: on
+universal: false
+modules: -*,ext4,nvme
 extra_files: fsck,fsck.ext4
 strip: true
 enable_lvm: true
