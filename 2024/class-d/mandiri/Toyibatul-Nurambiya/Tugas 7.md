@@ -1,6 +1,6 @@
 # Resume Kelompok 7 
 
-## Nama: Toyibatul Nurambiya 
+## Nama: Toyibatul Nurambiya
 
 ## NIM: 12402051030096
 
