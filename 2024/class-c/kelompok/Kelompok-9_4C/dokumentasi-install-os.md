@@ -123,7 +123,7 @@ mount --mkdir -o rw,nodev,nosuid,relatime /dev/pudding/dock /mnt/var/lib/docker
 
 ### home
 ```
-lvcreate -l70%FREE pudding -n vaud
+lvcreate -l70%FREE pudding -n home
 ```
 ```
 mkfs.ext4 /dev/pudding/home
