@@ -108,7 +108,7 @@ mount /dev/system/root /mnt
 ```
 ### Mount boot / EFI Partition
 ```
-mount --mkdir -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/nvme0n1p1 /mnt/boot
+mount --mkdir -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda5 /mnt/boot
 ```
 ### Mounting
 ```
@@ -147,4 +147,17 @@ cp /etc/systemd/network/* /mnt/etc/systemd/network
 ### Masuk ke chroot
 ```
 arch-chroot /mnt
+```
+### Konfigurasi Hostname
+```
+nvim /etc/hostname
+```
+ketik i untuk insert kemudian masukkan nama hostname kalian, klik ESC kemudian ketik :wq untuk keluar
+
+### Set Localtime
+```
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+```
+```
+hwclock --systohc
 ```
