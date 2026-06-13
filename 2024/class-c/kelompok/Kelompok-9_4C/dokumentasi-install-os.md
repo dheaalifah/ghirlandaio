@@ -82,7 +82,7 @@ mount --mkdir -o rw,nodev,nosuid,relatime /dev/pudding/vars /mnt/var
 ### tmp
 
 ```
-lvcreate -L 15G pudding -n tmp
+lvcreate -L 2G pudding -n tmp
 ```
 ```
 mkfs.ext4 /dev/pudding/tmp
