@@ -329,8 +329,27 @@ systemctl enable --now firewalld
 sudo firewall-cmd --zone=public --add-service=http --permanent 
 ```
 ```
-sudo firewall-cmd --zone=public --add-service=https --permanent
+sudo firewall-cmd --zone=public --add-port=2377/tcp --permanent
 ```
 ```
-sudo firewall-cmd --permanent --zone=public --add-service=ssh
+sudo firewall-cmd --zone=public --add-port=7946/tcp --permanent
+```
+```
+sudo firewall-cmd --zone=public --add-port=4789/tcp --permanent
+```
+```
+sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
+```
+```
+sudo firewall-cmd --zone=public --add-port=5432/tcp --permanent
+```
+```
+sudo firewall-cmd --zone=public --add-port=6379/tcp --permanent
+```
+```
+sudo firewall-cmd --reload
+```
+Selanjutnya, untuk melihat list-list port dan sistem yang sudah di enable ketik:
+```
+sudo firewall-cmd --list-ports
 ```
