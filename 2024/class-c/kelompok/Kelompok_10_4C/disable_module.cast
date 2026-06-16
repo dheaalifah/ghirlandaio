@@ -1,0 +1,61 @@
+# Disable module
+
+## Akses mode root
+
+```
+sudo su
+```
+
+**Masukkan password root**
+
+**Ketikan seperti ini**
+
+```
+lsmod | grep cramfs
+lsmod | grep freemxfs
+lsmod | grep hfs
+lsmod | grep hfsplus
+lsmod | grep overlayjfs
+lsmod | grep squashfs
+lsmod | grep udf
+lsmod | grep usb-storage
+lsmod | grep unused
+lsmod | grep overlayjfs
+lsmod | grep freevxfs
+```
+
+```
+nvim /etc/modprobe.d/disable.conf
+```
+
+**Masukkan sebagai berikut**
+
+```
+install usb-storage /bin/false
+blacklist usb-storage
+```
+
+**Setelah itu, exit**
+
+**Setelah itu, masukkan**
+
+```
+lsmod | grep afs
+lsmod | grep ceph
+lsmod | grep clfs
+lsmod | grep exfat
+lsmod | grep ext
+```
+
+**Cek lagi**
+
+```
+lsmod
+```
+
+**Setelah itu**
+
+```
+mkinitcpio -P
+```
+
