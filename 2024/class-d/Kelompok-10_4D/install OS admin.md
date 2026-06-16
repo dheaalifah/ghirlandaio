@@ -7,44 +7,66 @@
 
 ### Merekam Asciinema
 
-```asciinema rec nama_file.cast```
+```
+asciinema rec nama_file.cast
+```
 
 ### Connect Wifi
 
-```iwctl```
+```
+iwctl
+```
 
-```device list```
+```
+device list
+```
 
 **Cek driver wifi setiap laptop**
 
-```station (driver wifi) get-network```
+```
+station (driver wifi) get-networks
+```
 
 **Melihat jaringan yang tersedia**
 
-```station (driver wifi) scan```
+```
+station (driver wifi) scan
+```
 
 **Memindai jaringan yang ada**
 
-```station {device wifi} connect "{nama wifi}"```
+```
+station {device wifi} connect "{nama wifi}"
+```
 
-```exit```
+```
+exit
+```
 
 **Menghubungkan ke jaringan yang sudah ditentukan**
 
 ## Periksa Jaringan 
 
-```ping 1.1.1.1```
+```
+ping 1.1.1.1
+```
 
 ## Check Partisi
 ### jika ingin melihat partisi beserta type nya
 
-```lsblk -o name,fstype,size ```
+```
+lsblk -o name,fstype,size
+```
 
-```lsblk```
+```
+lsblk
+```
 
 ## Bagi Partisi
 
-```cfdisk /dev/[partisi]``` 
+```
+cfdisk /dev/[partisi]
+``` 
 
 **untuk membentuk layout yg mau di install**
 
@@ -54,136 +76,230 @@
 boot = 1G [EFI system]
 root = 49G [linux filesystem/]
 ```
-```lsblk```
+```
+lsblk
+```
 
 ## Setup LVM
 
-```pvcreate /dev/[partisi root]```
+```
+pvcreate /dev/[partisi root]
+```
 
-```vgcreate proc /dev/[partisi root]```
+```
+vgcreate proc /dev/[partisi root]
+```
 
 ## Membuat Logical Volume 
 
-```lvcreate -L 10G proc -n root```
+```
+lvcreate -L 10G proc -n root
+```
 
-```lvcreate -L 10G proc -n vars```
+```
+lvcreate -L 10G proc -n vars
+```
 
-```lvcreate -L 1G proc -n vtmp```
+```
+lvcreate -L 1G proc -n vtmp
+```
 
-```lvcreate -L 1G proc -n vlog```
+```
+lvcreate -L 1G proc -n vlog
+```
 
-```lvcreate -L 1G proc -n vaud```
+```
+lvcreate -L 1G proc -n vaud
+```
 
-```lvcreate -L 1G proc -n home```
+```
+lvcreate -L 1G proc -n home
+```
 
 ## Formating
 
-```mkfs.ext4 /dev/proc/root```
+```
+mkfs.ext4 /dev/proc/root
+```
 
-```mkfs.vfat -F32 -n BOOT /dev/[partisi boot]```
+```
+mkfs.vfat -F32 -n BOOT /dev/[partisi boot]
+```
 
-```mkfs.ext4 /dev/proc/vars```
+```
+mkfs.ext4 /dev/proc/vars
+```
 
-```mkfs.ext4 /dev/proc/vtmp```
+```
+mkfs.ext4 /dev/proc/vtmp
+```
 
-```mkfs.ext4 /dev/proc/vlog```
+```
+mkfs.ext4 /dev/proc/vlog
+```
 
-```mkfs.ext4 /dev/proc/vaud```
+```
+mkfs.ext4 /dev/proc/vaud
+```
 
-```mkfs.ext4 /dev/proc/home```
+```
+mkfs.ext4 /dev/proc/home
+```
 
 ## Mounting
 
-```mount /dev/proc/root /mnt```
+```
+mount /dev/proc/root /mnt
+```
 
-```mount --mkdir -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/[partisi boot] /mnt/boot```
+```
+mount --mkdir -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/[partisi boot] /mnt/boot
+```
 
-```mount --mkdir -o rw,nodev,nosuid,relatime /dev/proc/vars /mnt/var```
+```
+mount --mkdir -o rw,nodev,nosuid,relatime /dev/proc/vars /mnt/var
+```
 
-```mount --mkdir -o rw,nodev,nosuid,noexec,relatime /dev/proc/vtmp /mnt/var/tmp```
+```
+mount --mkdir -o rw,nodev,nosuid,noexec,relatime /dev/proc/vtmp /mnt/var/tmp
+```
 
-```mount --mkdir -o rw,nosuid,noexec,relatime /dev/proc/vlog /mnt/var/log```
+```
+mount --mkdir -o rw,nosuid,noexec,relatime /dev/proc/vlog /mnt/var/log
+```
 
-```mount --mkdir -o rw,nosuid,noexec,relatime /dev/proc/vaud /mnt/var/log/audit```
+```
+mount --mkdir -o rw,nosuid,noexec,relatime /dev/proc/vaud /mnt/var/log/audit
+```
 
-```mount --mkdir -o rw,nosuid,relatime /dev/proc/home /mnt/home```
+```
+mount --mkdir -o rw,nosuid,relatime /dev/proc/home /mnt/home
+```
 
 ## Setup LUKS
 
-```lvcreate -l50%FREE proc -n [nama]```
+```
+lvcreate -l50%FREE proc -n [nama]
+```
 
-```cryptsetup luksFormat /dev/proc/[nama]```
+```
+cryptsetup luksFormat /dev/proc/[nama]
+```
 
 ## Install Package 
 
 ### intel
 
-```pacstrap /mnt intel-ucode linux-lts linux-lts-headers linux-firmware lvm2 base base-devel neovim openssh superfile podman podman-desktop iptables mpd mpc mpv keepassxc secrets booster networkmanager pam_mount```
+```
+pacstrap /mnt intel-ucode linux-lts linux-lts-headers linux-firmware lvm2 base base-devel neovim openssh superfile podman podman-desktop iptables mpd mpc mpv keepassxc secrets booster networkmanager pam_mount
+```
 
 ### amd
 
-```pacstrap /mnt amd-ucode linux-lts linux-lts-headers linux-firmware lvm2 base base-devel neovim openssh superfile podman podman-desktop iptables mpd mpc mpv keepassxc secrets booster networkmanager pam_mount```
+```
+pacstrap /mnt amd-ucode linux-lts linux-lts-headers linux-firmware lvm2 base base-devel neovim openssh superfile podman podman-desktop iptables mpd mpc mpv keepassxc secrets booster networkmanager pam_mount
+```
 
 ## Fstab
 
-```genfstab -U /mnt > /mnt/etc/fstab```
+```
+genfstab -U /mnt > /mnt/etc/fstab
+```
 
 ## Formating tmpfs ke tmp
 
-```echo "/tmpfs /tmp  tmpfs  defaults,nosuid,nodev,noexec,size=1G  0  0" >> /mnt/etc/fstab```
+```
+echo "/tmpfs /tmp  tmpfs  defaults,nosuid,nodev,noexec,size=1G  0  0" >> /mnt/etc/fstab
+```
 
 ## chroot
 
-```arch-chroot /mnt```
+```
+arch-chroot /mnt
+```
 
-```echo [nama] > /etc/hostname```
+```
+echo [nama] > /etc/hostname
+```
 
 ## Localtime
 
-```ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime```
+```
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+```
 
-```hwclock --systohc```
+```
+hwclock --systohc
+```
 
 ## Locale
 
-```nvim /etc/locale.gen```
+```
+nvim /etc/locale.gen
+```
 **di pencarian nvim menggunakan `/`**
 
-```uncommenting kedua en_US```
+```
+uncommenting kedua en_US
+```
 
-### generate bahasa yg di uncommenting 
+### Generate bahasa
 
-```locale-gen```
+```
+locale-gen
+```
 
-```locale > /etc/locale.conf```
+```
+locale > /etc/locale.conf
+```
 
 ### config locale
 
-```nvim /etc/locale.conf```
+```
+nvim /etc/locale.conf
+```
 
 ### config file locale 
 
-```isi lang=C menjadi lang=en_US.UTF-8 dan isi ALL=en_US.UTF-8```
+```
+isi lang=C menjadi lang=en_US.UTF-8 dan isi ALL=en_US.UTF-8
+```
 
 ## pam_mount
 
-```cryptsetup luksOpen /dev/proc/miya [nama device]```
+```
+cryptsetup luksOpen /dev/proc/miya [nama device]
+```
 
-```mkfs.ext4 /dev/mapper [nama device]```
+```
+mkfs.ext4 /dev/mapper [nama device]
+```
 
 ## Membuat user
 
-```mkdir /home/user```
+```
+mkdir /home/user
+```
 
-```useradd -d /home/user mia```
+```
+useradd -d /home/user mia
+```
 
-```passwd mia```
+```
+passwd mia
+```
 
-```chown -R [username]:[username] /home/user```
+```
+chown -R [username]:[username] /home/user
+```
 
-```passwd```
+```
+passwd
+```
 
-```echo "mia ALL=(ALL:ALL) ALL" >  /etc/sudoers.d/none```
+```
+echo "mia ALL=(ALL:ALL) ALL" >  /etc/sudoers.d/none
+```
 
 ## Config volume
 
@@ -227,8 +343,6 @@ nvim /etc/security/pam_mount.conf.xml
 
 <!-- requires ofl from hxtools to be present -->
 <logout wait="0" hup="no" term="no" kill="no" />
-
-<!-- Example entry for a LUKS partition -->
 <volume 
     user="[user name]" 
     fstype="crypt" 
@@ -286,7 +400,9 @@ session    required   pam_env.so
 
 ## Booster
 
-```nvim /etc/booster.yaml```
+```
+nvim /etc/booster.yaml
+```
 
 ```
 network:
@@ -300,21 +416,33 @@ enable_lvm: true
 
 ## Prepare Boot
 
-```cd /boot``` 
+```
+cd /boot
+``` 
 
 untuk cek kernel 
 
-```ls /usr/lib/modules```
+```
+ls /usr/lib/modules
+```
 
-```booster build --kernel-version <version> /boot/booster-linux-lts-new.img```
+```
+booster build --kernel-version <version> /boot/booster-linux-lts-new.img
+```
 
-```rm -fr booster-linux-lts.img```
+```
+rm -fr booster-linux-lts.img
+```
 
 ## systemd-boot
 
-```bootctl --path=/boot install``` 
+```
+bootctl --path=/boot install
+``` 
 
-```nvim /boot/loader/entries/booster.conf``` 
+```
+nvim /boot/loader/entries/booster.conf
+``` 
 
 ```
 title    arch with booster
@@ -324,26 +452,48 @@ initrd   /booster-linux-lts-new.img
 options  root=/dev/proc/root rw
 ```
 
-```nvim /boot/loader/loader.conf``` 
+```
+nvim /boot/loader/loader.conf
+``` 
 
 add value
-```default  booster.conf``` 
-lalu ```esc``` ```:wq``` 
+```
+default  booster.conf
+``` 
+lalu
+```
+esc
+```
+```
+:wq
+``` 
 
-```bootctl --graceful update ``` 
+```
+bootctl --graceful update
+``` 
 
 ## Booting
 
-```exit``` 
+```
+exit
+``` 
 
-```umount -R /mnt```
+```
+umount -R /mnt
+```
 
 #### Hentikan asciinema
 
-```CTRL+D```
+```
+CTRL+D
+```
 
-```asciinema upload nama_file.cast```
+```
+asciinema upload nama_file.cast
+```
 
-```reboot```
+```
+reboot
+```
 
 
