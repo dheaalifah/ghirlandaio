@@ -87,3 +87,126 @@ lsblk
 ```
 kalau sudah, kita lanjut ke step berikutnya yaa
 ## Langkah selanjutnya, kita mounting
+**root**
+```
+mount /dev/nama grup/root /mnt
+```
+**boot**
+```
+mount --mkdir -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/partisi_boot /mnt/boot
+```
+**vars**
+```
+mount --mkdir -o rw,nodev,nosuid,relatime /dev/namagrup/vars /mnt/var
+```
+**vtmp**
+```
+mount --mkdir -o rw,nodev,nosuid,noexec,relatime /dev/namagrup/vtmp /mnt/var/tmp
+```
+**vaud**
+```
+mount --mkdir -o rw,nosuid,noexec,relatime /dev/namagrup/vaud /mnt/var/log/audit
+```
+**vlog**
+```
+mount --mkdir -o rw,nosuid,noexec,relatime /dev/namagrup/vlog /mnt/var/log
+```
+**home**
+```
+mount --mkdir -o rw,nosuid,relatime /dev/namagrup/home /mnt/home
+```
+**podman**
+```
+mount --mkdir -o rw,nosuid,noexec,relatime /dev/namagrup/podman /mnt/var/lib/containers
+```
+## Jangan lupa kita periksa kembali
+```
+lsblk
+```
+## Lanjut, kita akan install package yang kita butuhkan ya
+```
+pacstrap /mnt base intel-ucode linux-lts linux-lts-headers linux-firmware mkinitcpio lvm2 sudo curl neovim iwd firewalld pacman podman
+```
+nah itu kalau prosessor laptop kalian intel ya, kalau prosessor kalian amd ikuti command dibawah ini:
+```
+pacstrap /mnt base amd-ucode linux-lts linux-lts-headers linux-firmware mkinitcpio lvm2 sudo curl neovim iwd firewalld pacman podman
+```
+## Habis itu kita lanjut Fstab
+```
+genfstab -U /mnt > /mnt/etc/fstab
+```
+## Menyalin settingan jaringan
+```
+cp /etc/systemd/network/* /mnt/etc/systemd/network
+```
+## Selanjutnya kita tambahkan
+```
+echo "tmpfs /tmp tmpfs defaults, nosuid,noexec,size=1G 0 0" >> /mnt/etc/fstab
+```
+## Jangan lupa kita check kembali
+```
+cat /mnt/etc/fstab
+```
+## Habis itu, kita bisa langsung masuk ke sistem Chroot
+```
+arch-chroot /mnt
+```
+## Selanjutnya kita akan singkronisasi waktunya
+```
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+hwclock --systohc
+```
+## Atur bahasa dan lokalisasi nya
+```
+nvim /etc/locale.gen
+```
+**nah, kita cari dua en_US dan kita hapus hashtagnya (uncommenting)**
+klik esc, lalu ketik:
+```
+:wq
+```
+## Generate lokasi
+```
+locale.gen
+```
+```
+locale > /etc/locale.conf
+```
+```
+nvim /etc/locale.conf
+```
+**Pada bagian atas yang "C" kita ubah dengan en_US dan jangan lupa pada bagian paling bawahnya kita tambahkan en_US.UTF-8**
+## Selanjutnya kita akan membuat user untuk server (disini kami akan menggunakan nama user pluto yaaa)
+```
+useradd -m pluto
+```
+```
+passwd pluto
+```
+**kalian bebas untuk buat passwordnya, asal jangan susah susah ya, nanti malah ribet**
+**selanjutnya kita akan kasih akses ke usernya**
+```
+echo "pluto ALL=(ALL:ALL) ALL" >  /etc/sudoers.d/pluto
+```
+## Langkah selanjutnya kita akan Atur parameter
+```
+mkdir /etc/cmdline.d
+```
+```
+touch /etc/cmdline.d/{01-boot.conf,02-misc.conf}
+```
+```
+echo "rd.luks.name=$(blkid -s UUID -o value /dev/partisi root)=nama device root=/dev/nama grup/root" > /etc/cmdline.d/01-boot.conf
+```
+```
+echo "rw" > /etc/cmdline.d/02-misc.conf
+```
+## Lalu, kita atur mkinitcpio
+```
+nvim /etc/mkinitcpio.conf
+```
+**Scroll kebawah sampai kalian lihat ada "Hooks" yang ga ada hashtagnya, abis itu kalian klik huruf "i" pada keyboard laptop kalian yang berarti insert. nah di bagian itu ada yang bacaan nya "sd-console" nah sampingnya kalian tambahkan "sd-encrypt" lalu dispasi dan ketik "lvm2"**
+Klik esc, dan ketik:
+```
+:wq
+```
