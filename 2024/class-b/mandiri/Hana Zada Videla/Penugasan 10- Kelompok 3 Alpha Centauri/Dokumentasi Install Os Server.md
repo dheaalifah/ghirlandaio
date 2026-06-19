@@ -85,4 +85,4 @@ arch-chroot /mnt
 bootctl --path=/boot install  
 mkinitcpio -P       
 ```
-
+9. 
