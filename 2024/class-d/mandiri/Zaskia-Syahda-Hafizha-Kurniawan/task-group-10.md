@@ -1027,3 +1027,5 @@ firewall-cmd --set-default-zone=drop
 sudo firewall-cmd –reload
 ```
 
+# Link MD, Asciinema, dan Audio #
+https://drive.google.com/drive/folders/1SdQ74VZQ1J7ki_KiKKteuLpiNlcic4ba
