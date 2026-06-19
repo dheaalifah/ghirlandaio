@@ -2,7 +2,7 @@
 
 Masuk ke server menggunakan SSH:
 
-```bash
+```
 ssh hostname@192.168.2.110
 ```
 
@@ -10,13 +10,13 @@ ssh hostname@192.168.2.110
 
 Buka file konfigurasi jaringan:
 
-```bash
+```
 sudo nvim /etc/systemd/network/20-ethernet.network
 ```
 
 Isi file dengan konfigurasi berikut:
 
-```ini
+```
 [Match]
 Type=ether
 Kind=!*
@@ -43,7 +43,7 @@ Simpan dan keluar dari editor.
 
 Pasang paket Hostapd untuk membuat Access Point:
 
-```bash
+```
 sudo pacman -S hostapd
 ```
 
@@ -51,7 +51,7 @@ sudo pacman -S hostapd
 
 Periksa nama interface jaringan nirkabel yang tersedia:
 
-```bash
+```
 ip link
 ```
 
@@ -59,13 +59,13 @@ ip link
 
 Buka file konfigurasi Hostapd:
 
-```bash
+```
 sudo nvim /etc/hostapd/hostapd.conf
 ```
 
 Masukkan konfigurasi berikut:
 
-```conf
+```
 interface=wlan0
 driver=nl80211
 ssid=MyArchAP
@@ -86,7 +86,7 @@ Simpan perubahan dan keluar dari editor.
 
 Buat atau edit konfigurasi interface wireless:
 
-```bash
+```
 sudo nvim /etc/systemd/network/02-wireless-ap.network
 ```
 
@@ -96,13 +96,13 @@ Sesuaikan konfigurasi sesuai kebutuhan jaringan Access Point.
 
 Restart layanan jaringan:
 
-```bash
+```
 sudo systemctl restart systemd-networkd
 ```
 
 Aktifkan layanan agar berjalan otomatis saat boot:
 
-```bash
+```
 sudo systemctl enable --now systemd-networkd
 ```
 
@@ -110,19 +110,19 @@ sudo systemctl enable --now systemd-networkd
 
 Buat file konfigurasi IP forwarding:
 
-```bash
+```
 sudo nvim /etc/sysctl.d/30-ipforward.conf
 ```
 
 Isi file dengan konfigurasi berikut:
 
-```conf
+```
 net.ipv4.ip_forward=1
 ```
 
 Terapkan konfigurasi ke sistem:
 
-```bash
+```
 sudo sysctl --system
 ```
 
@@ -130,12 +130,8 @@ sudo sysctl --system
 
 Setelah seluruh konfigurasi selesai, keluar dari sesi terminal:
 
-```bash
-logout
-```
-
 atau
 
-```bash
+```
 exit
 ```
