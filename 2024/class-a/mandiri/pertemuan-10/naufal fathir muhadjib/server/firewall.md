@@ -1,4 +1,4 @@
-## disable firewall
+## disable module
 
 ## konek ke jaringan
 ````
