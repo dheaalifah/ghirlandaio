@@ -129,6 +129,7 @@ sudo firewall-cmd reload
 
 ## Melakukan pengecekan IP Server
 
+
 ```
 ip a
 ```
@@ -137,4 +138,5 @@ ip a
 ```
 https://[IP Server]: 80
 ```
+<img width="1280" height="720" alt="apk slims" src="https://github.com/user-attachments/assets/4e3bb13c-ee44-4582-b021-f58f3321331a" />
 
