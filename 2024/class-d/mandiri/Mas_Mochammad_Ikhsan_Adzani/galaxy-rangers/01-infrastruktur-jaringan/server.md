@@ -1,19 +1,21 @@
-# Membuat IP statis 
+# Buat dan Buka File Konfigurasi Jaringan
 ```
-nvim /etc/systemd/network/20-ethernet.network
+sudo nvim /etc/systemd/network/20-ethernet.network
 ```
+
+## Masukkan Pengaturan IP
 ```
 [Match]
 Type=ether
-# Exclude virtual Ethernet interfaces
+# Mengabaikan virtual Ethernet interface
 Kind=!*
 
 [Link]
 RequiredForOnline=routable
 
 [Network]
-Address=[ip address server]/CIDR
-Gateway=[ip address gateway]
+Address=<ip_server>/<angka_cidr>
+Gateway=<ip_gateway>
 DNS=1.1.1.1 8.8.8.8
 MulticastDNS=yes
 
@@ -29,9 +31,9 @@ RouteMetric=100
 RouteMetric=100
 ```
 # Membuat IP Saluran systemd 
-## Install Package
+## Instal Aplikasi Pemancar (Hostapd)
 ```
-pacman -S hostapd
+sudo pacman -S hostapd
 ```
 ## cek interface
 ```
