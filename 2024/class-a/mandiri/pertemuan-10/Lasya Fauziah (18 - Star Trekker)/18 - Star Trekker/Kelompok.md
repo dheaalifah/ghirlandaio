@@ -2,7 +2,7 @@
 
 Dimas Yoga Irtanto
 
-Fairuz Pramatana
+Fairuz Pramathana Sani
 
 Fathi Muhammad Rafi
 
