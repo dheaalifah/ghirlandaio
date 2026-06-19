@@ -142,3 +142,134 @@ cp /etc/systemd/network/* /mnt/etc/systemd/network
 ```
 echo "tmpfs /tmp tmpfs defaults, nosuid,noexec,size=1G 0 0" >> /mnt/etc/fstab
 ```
+### Melihat file fstab
+```
+cat /mnt/etc/fstab
+```
+### Masuk ke sistem baru
+```
+arch-chroot /mnt
+```
+### Mengatur Timezone
+```
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+```
+### Sinkronisasi Jam
+```
+hwclock --systohc
+```
+### Mengatur locale
+```
+nvim /etc/locale.gen
+```
+```
+en_US.UTF-8 UTF-8
+```
+```
+en_US ISO-8859-1
+```
+```
+locale.gen
+```
+```
+locale > /etc/locale.conf
+```
+```
+nvim /etc/locale.conf
+```
+```
+LANG=en_US.UTF-8
+```
+```
+LC_ALL=en_US.UTF-8
+```
+### Membuat User
+```
+useradd -m Lunar
+```
+```
+passwd Lunar
+```
+### Memberikan Hak Sudo
+```
+echo "Lunar ALL=(ALL:ALL) ALL" > /etc/sudoers.d/Lunar
+```
+### Konfigurasi Kernel Command Line
+```
+mkdir /etc/cmdline.d
+```
+```
+touch /etc/cmdline.d/{01-boot.conf,02-misc.conf}
+```
+```
+echo "rd.luks.name=$(blkid -s UUID -o value /dev/nvme0n1p8)=aw root=/dev/system/root" > /etc/cmdline.d/01-boot.conf
+```
+```
+echo "rw" > /etc/cmdline.d/02-misc.conf
+```
+### Konfigurasi mkinitcpio
+```
+nvim /etc/mkinitcpio.conf
+```
+```
+tambahkan kalimat sesudah "block" "sd-encrypt lvm2"
+##   NOTE: If you have /usr on a separate partition, you MUST include the
+#    usr and fsck hooks.
+HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block [sd-encrypt lvm2] filesystems fsck)
+```
+```
+nvim /etc/mkinitcpio.d/linux-lts.preset
+```
+```
+ALL_config="/etc/mkinitcpio.conf" 
+ALL_kver="/boot/vmlinuz-linux-lts"   
+ALL_kerneldest="/boot/vmlinuz-linux-lt
+
+#default_config="/etc/mkinitcpio.conf"
+#default_image="/boot/initramfs-linux-lts.img"
+default_uki="/boot/efi/Linux/arch-linux-lts.efi"
+#default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+```
+### Menginstall Bootctl
+```
+bootctl --path=/boot install
+```
+### Generate Initramfs
+```
+mkinitcpio -P
+```
+### Install Network Manager
+```
+pacman -S networkmanager
+```
+### Mengaktifkan Network
+```
+systemctl enable systemd-networkd
+```
+```
+systemctl enable systemd-resolved
+```
+```
+systemctl enable iwd
+```
+```
+systemctl enable firewalld
+```
+### Booting
+```
+exit
+```
+```
+umount -R /mnt
+```
+### Mematikan asciinema
+```
+ctrl+d
+```
+```
+asciinema rec [nama_file].cast
+```
+### Reboot
+```
+Reboot
+```
