@@ -30,6 +30,12 @@ cryptsetup luksOpen /dev/nvme0n1p7(partisi root) stardust (nama device)
 # Setup LVM
 ```
 lvcreate -L 10G system -n root
+lvcreate -L 10G system -n vars
+lvcreate -L 10G system -n vlog
+lvcreate -L 10G system -n vaud
+lvcreate -L 10G system -n vtmp
+lvcreate -L 10G system -n home
+lvcreate -L 10G system -n podman
 ```
 # Formating partisi
 ```
