@@ -79,10 +79,23 @@ pacstrap /mnt base intel-ucode linux-lts linux-lts-headers linux-firmware mkinit
 arch-chroot /mnt
 ```
 
-8. Install Bootloader
+8. Install Bootloader 
 ```
 
 bootctl --path=/boot install  
 mkinitcpio -P       
 ```
-9. 
+
+9. Enable Services
+```
+
+systemctl enable systemd-networkd
+
+systemctl enable systemd-resolved
+
+systemctl enable iwd 
+
+systemctl enable firewalld
+
+systemctl enable sshd
+```
