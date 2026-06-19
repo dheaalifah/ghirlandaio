@@ -1,4 +1,4 @@
-# Setup IP Admin
+# Konfigurasi Koneksi Jaringan dan Pembuatan User Operator
 ## Memeriksa Status Jaringan
 ```
 nmcli device status
